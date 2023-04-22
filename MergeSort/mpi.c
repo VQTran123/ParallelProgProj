@@ -98,7 +98,6 @@ int main(int argc, char** argv) {
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     initialize_CUDA(rank);
 
-    //Compute local array sum
     int elements = ARRAY_SIZE/size;
     long *array = (long*)malloc(elements*sizeof(long));
     for(int i = 0; i < elements; i++){
