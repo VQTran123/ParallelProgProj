@@ -1,8 +1,10 @@
 #include <inttypes.h>
 #include <stdio.h>
-#include <ctime>
+#include <stdlib.h>
+#include <time.h>
 int main(){
-    srand(time(NULL));
+    time_t t;
+    srand((unsigned) time(&t));
 	char *filename = "random.bin";
     long x;
 	FILE *fp = fopen(filename, "wb");
@@ -11,17 +13,10 @@ int main(){
 		return -1;
 	}
 	for(int i = 0; i < 1048576; i++){
-        x = rand();
+        x = rand() % 1000000;
+        printf ("Value is: %ld\n", x);
 		fwrite (&x, sizeof (x), 1, fp);
 	}
     fclose(fp);
-    FILE * fh = fopen ("random.bin", "rb");
-    for(int i = 0; i < 1048576; i++){
-        if (fh != NULL) {
-            fread (&x, sizeof (x), 1, fh);
-            fclose (fh);
-        }
-        printf ("Value is: %d\n", x);
-    }
 	return 0;
 }
