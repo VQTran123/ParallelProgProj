@@ -129,13 +129,6 @@ int main(int argc, char** argv) {
     MPI_File_close(&fh);
 
     int elements = ARRAY_SIZE/size;
-    
-    /*
-    long *array = (long*)malloc(elements*sizeof(long));
-    for(int i = 0; i < elements; i++){
-        array[i] = (long) rank*elements+i;
-    }
-    */
 
     double start_cycles;
     double end_cycles;
